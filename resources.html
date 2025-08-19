@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources | GoaGreenGuard</title>
+  <style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    background-color: #114d44;
+    color: white;
+    padding: 4rem 1rem 6rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  canvas#heroCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 1s ease-out;
+  }
+
+  .hero-content h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  /* NAVIGATION */
+  nav {
+    background-color: #0e3d37;
+    display: flex;
+    justify-content: right;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    position: relative;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #10b981;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+  }
+
+  /* SECTION STYLING */
+  section {
+    margin-bottom: 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+    border-radius: 12px 12px 0 0;
+  }
+
+  section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  section:nth-child(odd) {
+    background: #f9fafb;
+  }
+  section:nth-child(even) {
+    background: #eefdf7;
+  }
+
+  section h2 {
+    color: #114d44;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: #10b981;
+    transition: width 0.4s ease;
+  }
+
+  section h2:hover::after {
+    width: 100%;
+  }
+
+  section img {
+    max-width: 100%;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  section img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  }
+
+  section p {
+    color: #333;
+    line-height: 1.6;
+  }
+
+  ul {
+    text-align: left;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  footer {
+    background-color: #0e3d37;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+
+</head>
+<body>
+
+  <header>
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <h1>Helpful Resources</h1>
+      <p>Tools, guides, and contacts to support environmental action in Goa</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="data.html">Data</a>
+    <a href="get_involved.html">Get Involved</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+    <a href="report.html">Report</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>How to Organize a Beach Cleanup</h2>
+      <p>It is a simple yet impactful way to protect our coastlines and engage the community. Start by choosing a local beach that needs attention and get the necessary permissions from authorities. Gather volunteers, provide them with gloves, bags, and safety instructions, and work together to remove litter and sort recyclable materials. Document the waste collected and share the results to raise awareness. These cleanups not only restore natural beauty but also inspire long-term environmental responsibility.</p>
+    </section>
+
+    <section>
+      <h2>Reporting Guidelines</h2>
+      <p>Ensure quick and effective action, provide clear and accurate details when reporting environmental issues. Mention the exact location, type of pollution (e.g., plastic waste, sewage, illegal dumping), and any visual evidence such as photos or videos. Be respectful and concise in your description. Avoid false or duplicate reports. Each submission is verified by our team or local partners, so truthful reporting helps us maintain credibility and respond faster to real problems..</p>
+    </section>
+
+    <section>
+      <h2>Government Waste Contacts</h2>
+      <ul>
+        <li><strong>Goa Pollution Control Board:</strong> +91-832-1234567</li>
+        <li><strong>Panaji Municipal Solid Waste Department:</strong> +91-832-7654321</li>
+        <li><strong>24x7 Eco-Helpline:</strong> 1800-xxx-xxxx</li>
+      </ul>
+    </section>
+
+   
+  </main>
+
+  
+
+  <footer>
+    <p>&copy; 2025 GoaGreenGuard. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Canvas particles
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const particles = Array.from({ length: 40 }).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 3 + 1,
+      dx: (Math.random() - 0.5) * 1.2,
+      dy: (Math.random() - 0.5) * 1.2
+    }));
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffffaa';
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Sound toggle
+    const audio = document.getElementById("ambientSound");
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+</html>

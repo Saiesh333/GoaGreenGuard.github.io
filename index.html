@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GoaGreenGuard - Home</title>
+  <style>
+    body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  position: relative;
+  height: 50vh;
+  overflow: hidden;
+  background-color: #114D44;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#heroCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeDown 2s ease forwards;
+}
+
+.header-content h1 {
+  font-size: 3rem;
+  margin: 0;
+  animation: float 4s ease-in-out infinite;
+}
+
+.header-content p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Text floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- NAVIGATION ---------- */
+nav {
+  background-color: #114D44;
+  color: white;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.nav__toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.nav__menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #10B981;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: block;
+  }
+  .nav__menu {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+  .nav__menu.open {
+    display: flex;
+  }
+}
+
+/* ---------- MAIN SECTIONS ---------- */
+main {
+  padding: 1rem;
+}
+
+
+
+
+
+/* ---------- IMAGES ---------- */
+img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+  transition: transform 0.6s ease, box-shadow 0.4s ease;
+}
+
+img:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background-color: #114D44;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+}
+
+/* ---------- SECTION STYLES ---------- */
+
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section:hover {
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+}
+
+
+
+
+section {
+  position: relative;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 2.5rem;
+  margin: 3rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+/* Section accent bar */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(90deg, #10B981, #34D399, #3B82F6);
+}
+
+/* Section hover interaction */
+section:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.3);
+}
+
+/* Heading glow underline */
+section h2 {
+  font-size: 1.8rem;
+  color: #114D44;
+  position: relative;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  left: 25%;
+  bottom: -6px;
+  background: linear-gradient(90deg, #10B981, #34D399);
+  border-radius: 2px;
+  transition: width 0.4s;
+}
+
+section:hover h2::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Paragraph animations */
+section p {
+  line-height: 1.6;
+  color: #444;
+  animation: fadeUp 1s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section color accents */
+#overview { background: rgba(255, 255, 255, 0.95); }
+#data { background: rgba(240, 255, 250, 0.95); }
+#recycling { background: rgba(255, 250, 240, 0.95); }
+#gallery { background: rgba(250, 250, 255, 0.95); }
+#science { background: rgba(245, 255, 250, 0.95); }
+
+/* Images inside sections */
+
+section .images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;      /* wrap to next line if too many */
+  gap: 1rem;            /* spacing between images */
+  margin: 1rem 0;
+}
+
+section .images img {
+  max-width: 280px;     /* control size */
+  width: 100%;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  transition: transform 0.5s ease, box-shadow 0.4s ease;
+}
+
+section .images img:hover {
+  transform: scale(1.07);
+  border-color: #10B981;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <canvas id="heroCanvas"></canvas>
+    <div class="header-content">
+      <h1>Welcome to GoaGreenGuard</h1>
+      <p>We are building a greener Goa through data, action, and education.</p>
+    </div>
+  </header>
+
+  <nav class="nav__bar">
+    <div class="logo">GoaGreenGuard</div>
+    <button class="nav__toggle">&#9776;</button>
+    <ul class="nav__menu">
+      <li><a href="index.html" class="nav__link">Home</a></li>
+      <li><a href="data.html" class="nav__link">Data</a></li>
+      <li><a href="get_involved.html" class="nav__link">Get Involved</a></li>
+      <li><a href="resources.html" class="nav__link">Resources</a></li>
+      <li><a href="contact.html" class="nav__link">Contact</a></li>
+      <li><a href="report.html" class="nav__link">Report Issue</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    
+     
+   <section id="overview">
+  <h2>The Problem</h2>
+  <p>
+    Goa, known for its beautiful beaches and lush landscapes, is currently battling a growing environmental crisis. 
+    Unregulated tourism, improper waste disposal, and increasing plastic consumption have led to serious pollution problems. 
+    Many urban and rural areas suffer from overflowing garbage bins, illegal dumping, and clogged waterways, endangering both public health and biodiversity.
+  </p>
+  <p>
+    What makes the situation worse is the lack of awareness, weak enforcement of waste management laws, and limited public participation in environmental protection. 
+    Without collective effort, Goa’s natural charm and ecosystem face irreversible damage.
+  </p>
+  <div class="images">
+   <img src="https://tse2.mm.bing.net/th/id/OIP.Iy9K0wmDrviNWvtFWknqXgHaEI?pid=Api&P=0&h=180" alt="Polluted area in Goa">
+   <img src="https://tse4.mm.bing.net/th/id/OIP.jFCkdmRBfeKWkRmtrCjupAHaEJ?pid=Api&P=0&h=180" alt="pollution">
+  </div>
+  <h2>Our Solution</h2><br><br>
+  <p>
+    GoaGreenGuard steps in as a citizen-powered initiative that blends technology with community action. 
+    Our platform allows individuals to report pollution issues, organize clean-up drives, and access verified resources and data. 
+    Whether it’s a clogged canal or a beach littered with plastics, users can document it in real-time, helping local authorities respond faster and more effectively.
+  </p>
+  <p>
+    By empowering residents and visitors alike, we’re building a more responsible, informed, and environmentally engaged community. 
+    Through collaboration, education, and transparency, GoaGreenGuard aims to make sustainability not just a goal—but a lifestyle.
+  </p>
+  <div class="images">
+  <img src="https://tse4.mm.bing.net/th/id/OIP.LFouA1mxWoyr5ajeQ-GxcwHaE7?pid=Api&P=0&h=180" alt="Community in action">
+  </div>
+</section>
+
+
+   <section id="data">
+  <h2>Our Environmental Impact</h2>
+  <div class="images">
+    <img src="https://tse4.mm.bing.net/th/id/OIP.-QAtQFWrLeTC_1b-V5ZkAAHaEK?pid=Api&P=0&h=180" alt="Environmental progress in Goa" />
+  </div>
+  <p>
+    GoaGreenGuard is in its early stages, but we've already begun collaborating with passionate volunteers, students, 
+    and local groups to raise awareness about pollution. Our pilot clean-up events and test reports have shown encouraging community response.
+  </p>
+  <p>
+    We're actively building a transparent data collection system powered by citizen input and verified by local partners. 
+    Our goal is to create an open platform that maps pollution trends, identifies hotspots, and helps decision-makers take faster action.
+  </p>
+</section>
+
+
+  <section id="recycling">
+    <h2>Recycling Tips for Citizens</h2>
+    <div class="images">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.Usagtf4tFhkvkzYzuxyfQQHaEJ?pid=Api&P=0&h=180" alt="Recycling bins" />
+    </div>
+    <p>
+      Not all waste is waste! Learning to recycle properly starts at home. 
+      Sort your plastics, metals, and organics separately and rinse items before disposal.
+    </p>
+    <p>
+      Avoid black plastic and single-use bags — opt for compostable or reusable alternatives. 
+      Always drop e-waste at registered centers. Recycle right, and reduce Goa’s landfill burden one item at a time.
+    </p>
+  </section>
+
+  <section id="gallery">
+    <h2>Citizen Gallery</h2>
+    <div class="images">
+     <img src="https://tse3.mm.bing.net/th/id/OIP.smuRRrkAlOvmx4p6TxhsxgHaEK?pid=Api&P=0&h=180" alt="Citizen-led cleanup event" />
+     <img src="https://tse4.mm.bing.net/th/id/OIP.80FU_LTJMf8AWYWe8ArDZQHaFD?pid=Api&P=0&h=180" alt="Citizen-led cleanup event" />
+     <img src="https://tse1.mm.bing.net/th/id/OIP.qHuuoqUFkclNEtCyY7DOOgHaE8?pid=Api&P=0&h=180" alt="Citizen-led cleanup event" />
+    </div>
+    <p>
+      Meet the heroes behind the mission! Our gallery features photos and stories from volunteers across Goa 
+      who are actively restoring their neighborhoods — from beach cleanups in Baga to creek restoration in Mapusa.
+    </p>
+    <p>
+      Submit your own cleanup photos or before-after shots through our app and get featured. 
+      Let’s celebrate real people driving real change.
+    </p>
+  </section>
+
+  <section id="science">
+    <h2>The Science Behind Pollution</h2>
+    <div class="images">
+     <img src="https://tse4.mm.bing.net/th/id/OIP.lcIQfry9nrQ1SUWdOnxySAHaEK?pid=Api&P=0&h=180" alt="Plastic in ocean" />
+    </div>
+    <p>
+      Plastic doesn’t disappear — it breaks down into harmful microplastics that enter our food chain and marine life. 
+      Untreated sewage, agricultural runoff, and heavy metals further damage Goa’s fragile coastal ecosystems.
+    </p>
+    <p>
+      By understanding the science of pollution, we can choose smarter solutions: composting, wetland restoration, 
+      and biomimicry in urban planning. Knowledge empowers action.
+    </p>
+  </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GoaGreenGuard. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle menu + remember state
+    const toggle = document.querySelector('.nav__toggle');
+    const menu = document.querySelector('.nav__menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      localStorage.setItem('menuOpen', menu.classList.contains('open'));
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('menuOpen') === 'true') {
+        menu.classList.add('open');
+      }
+    });
+
+    // Canvas animation: Floating white particles
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = canvas.offsetHeight;
+
+    let particles = [];
+    for (let i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 3 + 1,
+        d: Math.random() * 50,
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.beginPath();
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        ctx.moveTo(p.x, p.y);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+      }
+      ctx.fill();
+      updateParticles();
+    }
+
+    let angle = 0;
+    function updateParticles() {
+      angle += 0.01;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.y += Math.cos(angle + p.d) + 1 + p.r / 2;
+        p.x += Math.sin(angle) * 2;
+
+        if (p.y > canvas.height) {
+          p.y = 0;
+          p.x = Math.random() * canvas.width;
+        }
+      }
+    }
+
+    function animate() {
+      drawParticles();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Scroll reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>
+  
+
+
+

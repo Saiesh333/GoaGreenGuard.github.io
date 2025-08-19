@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GoaGreenGuard - Get Involved</title>
+  <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  #headerCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #0a4d4a;
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 1.2s ease forwards;
+  }
+
+  .header-content h1 {
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Floating heading animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Fade down animation */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  nav {
+    background-color: #114D44;
+    padding: 1rem;
+    text-align: right;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    position: relative;
+  }
+
+  /* Underline hover animation */
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #10B981;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  main {
+    padding: 2rem;
+  }
+
+  section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Accent gradient bar */
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(90deg, #10B981, #0ea5e9, #9333ea);
+  }
+
+  /* Lift-up hover */
+  section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Heading underline effect */
+  section h2 {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  section h2::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #10B981;
+    transition: width 0.3s ease;
+  }
+
+  section h2:hover::after {
+    width: 100%;
+  }
+
+  /* Soft background colors for sections */
+  section:nth-child(odd) {
+    background: #f0fdfa;
+  }
+  section:nth-child(even) {
+    background: #fdf2f8;
+  }
+
+  /* Images styling */
+  section img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 1rem 0;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  section img:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5);
+  }
+
+  button {
+    background-color: #10B981;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <canvas id="headerCanvas"></canvas>
+    <div class="header-content">
+      <h1>Get Involved with GoaGreenGuard</h1>
+      <p>Join us in protecting Goa’s environment. Every step counts!</p>
+    </div>
+  </header>
+
+  
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="data.html">Data</a>
+    <a href="get_involved.html">Get Involved</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+    <a href="report.html">Report</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Volunteer With Us</h2>
+      <p>Be a part of local cleanups, awareness campaigns, and conservation drives. Whether you're a student, professional, or retiree, your time can make a difference.</p>
+      <button onclick="alert('Volunteer form coming soon!')">Sign Up to Volunteer</button>
+    </section>
+
+    <section>
+      <h2>Support the Cause</h2>
+      <p>Your donations help us provide cleanup supplies, maintain our reporting tools, and support environmental education efforts across Goa.</p>
+      <button onclick="alert('Donation portal coming soon!')">Donate Now</button>
+    </section>
+
+    <section>
+      <h2>Spread the Word</h2>
+      <p>Follow us on social media, share our stories, and invite others to join. Together, we can build a greener future for Goa!</p>
+      <button onclick="alert('Sharing tools coming soon!')">Share & Support</button>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('headerCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = 300;
+
+    let bubbles = [];
+
+    for (let i = 0; i < 40; i++) {
+      bubbles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 10 + 5,
+        dx: (Math.random() - 0.5) * 2,
+        dy: Math.random() * -1.5 - 0.5
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      bubbles.forEach(bubble => {
+        ctx.beginPath();
+        ctx.arc(bubble.x, bubble.y, bubble.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        bubble.x += bubble.dx;
+        bubble.y += bubble.dy;
+
+        if (bubble.y + bubble.r < 0) {
+          bubble.y = canvas.height + bubble.r;
+          bubble.x = Math.random() * canvas.width;
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
+</body>
+</html>

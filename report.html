@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report an Issue - GoaGreenGuard</title>
+  <style>
+  /* Base */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+    color: #333;
+  }
+
+  /* Header */
+  header {
+    position: relative;
+    background-color: #114D44;
+    height: 50vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  header canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+  .header-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeDown 1s ease forwards, float 3.5s ease-in-out infinite;
+  }
+  .header-content p {
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0;
+    animation: fadeDown 1s ease forwards;
+    animation-delay: 0.2s;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-10px); }
+  }
+
+  /* Sticky Nav */
+  nav.nav__bar {
+    background-color: #114D44;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .nav__toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .nav__menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  .nav__link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  .nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    height: 2px;
+    width: 0;
+    background: #10B981;
+    transition: width 0.3s ease;
+  }
+  .nav__link:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .nav__toggle { display: block; }
+    .nav__menu { flex-direction: column; width: 100%; display: none; }
+    .nav__menu.open { display: flex; }
+  }
+
+  /* Sections */
+  main {
+    padding: 2rem;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    gap: 2rem;
+  }
+  section {
+    position: relative;
+    background-color: #ffffffcc;
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
+  }
+  section.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 6px;
+    width: 100%;
+    border-radius: 14px 14px 0 0;
+    background: linear-gradient(90deg,#10b981,#06b6d4,#3b82f6,#9333ea);
+  }
+  section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.16), 0 0 12px rgba(16,185,129,0.25);
+  }
+  section:nth-of-type(odd) { background: #f0fdfa; }
+  section:nth-of-type(even){ background: #fdf4ff; }
+
+  /* Images */
+  section img {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 1rem auto 0;
+    border-radius: 12px;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  }
+  section img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 14px 28px rgba(59,130,246,0.3);
+  }
+
+  /* Forms */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  label {
+    font-weight: bold;
+    text-align: left;
+  }
+  input, select, textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #10B981;
+    box-shadow: 0 0 10px rgba(16,185,129,0.3);
+    outline: none;
+  }
+  button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #10B981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  button:hover {
+    background-color: #0f9c6e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  }
+
+  /* Footer */
+  footer {
+    background-color: #114D44;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-top: 4px solid #10b981;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <canvas id="heroCanvas"></canvas>
+    <div class="header-content">
+      <h1>Report a Pollution Issue</h1>
+      <p>Empower change by taking the first step</p>
+    </div>
+  </header>
+
+  <nav class="nav__bar">
+    
+    <button class="nav__toggle">&#9776;</button>
+    <ul class="nav__menu">
+      <li><a class="nav__link" href="index.html">Home</a></li>
+      <li><a class="nav__link" href="data.html">Data</a></li>
+      <li><a class="nav__link" href="get_involved.html">Get Involved</a></li>
+      <li><a class="nav__link" href="resources.html">Resources</a></li>
+      <li><a class="nav__link" href="contact.html">Contact</a></li>
+      <li><a class="nav__link" href="report.html">Report</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Submit Your Report</h2>
+      <p>Seen something that needs action? Fill out the form below to alert us and contribute to a cleaner Goa.</p>
+      <form>
+        <label for="issue-type">Issue Type:</label>
+        <select id="issue-type" required>
+          <option disabled selected>Select an issue</option>
+          <option>Garbage Dump</option>
+          <option>Plastic Waste</option>
+          <option>Sewage Leakage</option>
+          <option>Water Pollution</option>
+          <option>Other</option>
+        </select>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="e.g., Baga Beach, Near Temple" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" rows="4" placeholder="Explain the issue in detail..." required></textarea>
+
+        <label for="image">Upload an Image (optional):</label>
+        <input type="file" id="image" accept="image/*" />
+
+        <button type="submit">Submit Report</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GoaGreenGuard. All rights reserved.</p>
+  </footer>
+
+  <!-- Script for Canvas and Interactivity -->
+  <script>
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const particles = Array.from({ length: 50 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 3 + 2,
+      d: Math.random() * 1 + 0.5
+    }));
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y += p.d;
+        if (p.y > canvas.height) {
+          p.y = 0;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // Navigation toggle
+    const toggle = document.querySelector('.nav__toggle');
+    const menu = document.querySelector('.nav__menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      localStorage.setItem('menuOpen', menu.classList.contains('open'));
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('menuOpen') === 'true') {
+        menu.classList.add('open');
+      }
+    });
+
+    // Section scroll reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
